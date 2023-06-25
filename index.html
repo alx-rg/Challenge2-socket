@@ -20,7 +20,8 @@
     <ul id="messages"></ul>
     <form id="form" action="">
       <input id="username" type="text" placeholder="Enter your username" />
-      <input id="input" autocomplete="off" placeholder="Message here" /><button>Send</button>
+      <input id="input" autocomplete="off" placeholder="Message here" />
+      <button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -41,7 +42,7 @@
 
       socket.on('user left', () => {
         let item = document.createElement('li');
-        item.textContent = 'user has disconnected';
+        item.textContent = 'A user has disconnected';
         messages.appendChild(item);
       });
 
@@ -57,7 +58,7 @@
       socket.on('chat message', function(msg) {
         const { message, username } = msg;
         let item = document.createElement('li');
-        item.textContent = msg.username + ': ' + msg.message;
+        item.textContent = username + ': ' + message;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
